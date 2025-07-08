@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo-2.png') }}">
+    <title>JKS - Prediction Results</title>
+    <link href="{{ url_for('static', filename='owl.carousel.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='owl.theme.default.min.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='bootstrap.min-RES.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='helper.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='style-RES.css') }}" rel="stylesheet">
+</head>
+
+<body class="header-fix fix-sidebar">
+    <div id="main-wrapper">
+        <!-- Header -->
+        <div class="header">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header">
+                    <a href="/" class="menuzord-brand">
+                        <img src="{{url_for('static', filename='logo-2.png')}}" />
+                    </a>
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <li class="nav-item"><a class="nav-link" href="/">HOME</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/">PREDICT THE FUTURE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">DASHBOARD</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">ABOUT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">CONTACT US</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- End Header -->
+
+        <!-- Page Content -->
+        <div class="page-wrapper">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">TODAY'S {{quote}} STOCK DATA</h3>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <!-- Stock Data Cards -->
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{open_s}}</h2>
+                                    <p class="m-b-0 text-white">OPEN</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-warning p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{high_s}}</h2>
+                                    <p class="m-b-0 text-white">HIGH</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{low_s}}</h2>
+                                    <p class="m-b-0 text-white">LOW</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-danger p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{close_s}}</h2>
+                                    <p class="m-b-0 text-white">CLOSE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-warning p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{adj_close}}</h2>
+                                    <p class="m-b-0 text-white">ADJ CLOSE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{vol}}</h2>
+                                    <p class="m-b-0 text-white">VOLUME</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Charts -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>RECENT TRENDS IN {{quote}} STOCK PRICES</h4>
+                            </div>
+                            <div class="sales-chart">
+                                <img src="{{url_for('static', filename='Trends.png')}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>ARIMA MODEL ACCURACY</h4>
+                            </div>
+                            <div class="sales-chart">
+                                <img src="{{url_for('static', filename='ARIMA.png')}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>LSTM MODEL ACCURACY</h4>
+                            </div>
+                            <div class="team-chart">
+                                <img src="{{url_for('static', filename='LSTM.png')}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>LINEAR REGRESSION MODEL ACCURACY</h4>
+                            </div>
+                            <div class="team-chart">
+                                <img src="{{url_for('static', filename='LR.png')}}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Prediction Results -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{arima_pred}}</h2>
+                                    <p class="m-b-0 text-white">TOMORROW'S {{quote}} CLOSING PRICE BY ARIMA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-warning p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{lstm_pred}}</h2>
+                                    <p class="m-b-0 text-white">TOMORROW'S {{quote}} CLOSING PRICE BY LSTM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-danger p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{lr_pred}}</h2>
+                                    <p class="m-b-0 text-white">TOMORROW'S {{quote}} CLOSING PRICE BY LINEAR REGRESSION</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Model Errors -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{error_arima}}</h2>
+                                    <p class="m-b-0 text-white">ARIMA RMSE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{error_lstm}}</h2>
+                                    <p class="m-b-0 text-white">LSTM RMSE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{error_lr}}</h2>
+                                    <p class="m-b-0 text-white">LINEAR REGRESSION RMSE</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tweets Table -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>RECENT TWEETS AND NEWS ABOUT {{quote}}</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Tweets</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="round-img">
+                                                        <a href="https://twitter.com/">
+                                                            <img style="width:70px;height:70px;" src="{{url_for('static', filename='twitter-logo.png')}}" alt="Twitter">
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    {% for i in range(0,12) %}
+                                                        {{tw_list[i]}}<br>
+                                                    {% endfor %}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sentiment Analysis and Forecast Table -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>SENTIMENT ANALYSIS FOR {{quote}} TWEETS</h4>
+                            </div>
+                            <div class="sales-chart">
+                                <img src="{{url_for('static', filename='SA.png')}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-title">
+                                <h4>PREDICTED {{quote}} PRICE FOR THE NEXT 7 DAYS</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Close</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        <a href="https://finance.yahoo.com/quote/{{quote}}">
+                                                            <img style="width:120px;height:120px;" src="{{url_for('static', filename='fore.png')}}" alt="Forecast">
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    {% for row in forecast_set %}
+                                                        {{row[0]}}<br>
+                                                    {% endfor %}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Polarity and Recommendation -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-success p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white">{{tw_pol}}</h2>
+                                    <p class="m-b-0 text-white">OVERALL TWEETS POLARITY</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card bg-primary p-20">
+                            <div class="media widget-ten">
+                                <div class="media-body media-text-right">
+                                    <h2 class="color-white text-white" style="text-align: left;">
+                                        According to the ML Predictions & Sentiment Analysis of the Tweets, a {{idea}} in {{quote}} stock is expected => {{decision}}
+                                    </h2>
+                                    <p class="m-b-0 text-white">RECOMMENDATION</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div class="footer-section-area padding-top-bottom">
+                    <div class="container" style="background-color: #1f2b31;">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <img src="{{url_for('static', filename='logo-2.png')}}" />
+                                <p style="color:white;">JKS was started with a common goal of serving the finance community while they make transitions. All our team members bring to table their unique expertise and experience of stock market which they would like to pass on to future investors.</p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <h3 style="color:white;padding-top: 20px;">Contact Us</h3>
+                                <ul style="color:white;padding-top: 25px;">
+                                    <li>JKS, Office 206, Hubtown Solaris, Prof. NS Phadke Road, Churchgate (E) Mumbai, Maharashtra, India</li>
+                                    <li><i class="fa fa-envelope-o fa-2x"></i>info.bom@jks.com</li>
+                                    <li><i class="fa fa-phone fa-2x"></i>+91 98 19384052</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <h3 style="color:white;padding-top: 25px;">Quick Links</h3>
+                                <ul>
+                                    <li><a style="color:white;" href="/"> <i class="fa fa-arrow-right"></i> HOME</a></li>
+                                    <li><a style="color:white;" href="#"> <i class="fa fa-arrow-right"></i> DASHBOARD</a></li>
+                                    <li><a style="color:white;" href="#"> <i class="fa fa-arrow-right"></i> ABOUT</a></li>
+                                    <li><a style="color:white;" href="#"> <i class="fa fa-arrow-right"></i> CONTACT US</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <h3 style="color:white;padding-top: 20px;">Location</h3>
+                                <div class="our-service">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d60383.60024757153!2d72.8317!3d18.9325!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x65cbb9c5d81e88aa!2sJKS%20Wealth%20Management%20Pvt.%20Ltd!5e0!3m2!1sen!2sus!4v1571992752493!5m2!1sen!2sus" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen="false"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Footer -->
+            </div>
+        </div>
+        <!-- End Page Wrapper -->
+    </div>
+    <!-- Scripts -->
+    <script src="{{url_for('static', filename='jquery-RES.min.js')}}"></script>
+    <script src="{{url_for('static', filename='popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='bootstrap-RES.min.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.slimscroll.js')}}"></script>
+    <script src="{{url_for('static', filename='sidebarmenu.js')}}"></script>
+    <script src="{{url_for('static', filename='sticky-kit.min.js')}}"></script>
+    <script src="{{url_for('static', filename='d3.min.js')}}"></script>
+    <script src="{{url_for('static', filename='topojson.js')}}"></script>
+    <script src="{{url_for('static', filename='datamaps.world.min.js')}}"></script>
+    <script src="{{url_for('static', filename='datamap-init.js')}}"></script>
+    <script src="{{url_for('static', filename='jquery.simpleWeather.min.js')}}"></script>
+    <script src="{{url_for('static', filename='weather-init.js')}}"></script>
+    <script src="{{url_for('static', filename='owl.carousel.min.js')}}"></script>
+    <script src="{{url_for('static', filename='owl.carousel-init.js')}}"></script>
+    <script src="{{url_for('static', filename='echarts.js')}}"></script>
+    <script src="{{url_for('static', filename='dashboard1-init.js')}}"></script>
+    <script src="{{url_for('static', filename='custom.min.js')}}"></script>
+</body>
+
+</html>

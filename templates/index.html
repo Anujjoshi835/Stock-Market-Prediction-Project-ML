@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; }
+        .container { max-width: 400px; margin: 80px auto; background: #fff; padding: 32px 24px 24px 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);}
+        h2 { text-align: center; margin-bottom: 24px; color: #222; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 6px; color: #333; }
+        input[type="text"] { width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #bbb; }
+        button { width: 100%; padding: 10px; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 1em; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .alert { background: #ffdddd; color: #a94442; padding: 10px; border-radius: 4px; margin-bottom: 16px; border: 1px solid #e0b4b4; }
+        .footer { text-align: center; color: #888; margin-top: 40px; font-size: 0.95em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Stock Predictor</h2>
+        {% if not_found %}
+        <div class="alert">
+            Stock Symbol (Ticker) Not Found. Please Enter a Valid Stock Symbol.
+        </div>
+        {% endif %}
+        <form action="{{ url_for('insertintotable') }}" method="POST">
+            <div class="form-group">
+                <label for="nm">Enter Stock Symbol</label>
+                <input type="text" id="nm" name="nm" placeholder="e.g. AAPL, TSLA, INFY" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+    <div class="footer">
+        &copy; {{ 2025 }} JKS Wealth Management Pvt. Ltd.
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+flask
+alpha_vantage
+pandas
+numpy
+matplotlib
+yfinance
+tweepy
+textblob
+keras
+tensorflow
+statsmodels
+nltk
+scikit-learn
+preprocessor
